@@ -10,13 +10,19 @@ function load(signed,loggedin,regions,userfname,userlname)
 		document.write("<div id='menu' style='background:white;width:1000;height:20'>");
 		document.write("<a onclick='login()'>Login</a> ");
 		document.write("<a onclick='signup()'>Signup</a> ");
+		document.write("</div>");
+	} else {
+		document.write("<div id='menu' style='background:white;width:1000;height:20'>");
+		document.write("<a onclick='logout()'>Logout</a> ");
+		document.write("</div>");
 	}
 }
 function login()
 {
 	var userfname = prompt("User firstname");
 	var userlname = prompt("User lastname");
-	window.location = "Login.php?f=" + userfname + "&l=" + userlname;
+	var pwd = prompt("Password");
+	window.location = "/Login.php?f=" + userfname + "&l=" + userlname + "&pwd=" + pwd;
 }
 function signup()
 {
@@ -27,4 +33,8 @@ function signup()
 	if(password == passwordConf){
 		window.location = "Signup.php?f=" + userfname + "&l=" + userlname + "&pwd=" + password;
 	}
+}
+function logout()
+{
+	window.location = "Logout.php";
 }

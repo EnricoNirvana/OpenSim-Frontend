@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 echo("<script type='text/javascript' src='main.js'></script>");
 include("CONFIG/db.php");
@@ -20,6 +20,6 @@ $reg = mysql_query("SELECT * FROM regions");
 $regions = mysql_num_rows($reg);
 
 //Create the webpage
-echo("<body onload='load(\"" . $usertotal . "\",\"" . $logged . "\",\"" . $regions . "\",\"" . $_SESSION['zsysfrontendFname'] . "\",\"" . $_SESSION['zsysfronendLname'] . "\")'>");
+echo("<body onload='load(\"" . $usertotal . "\",\"" . $logged . "\",\"" . $regions . "\",\"" . $_SESSION['zsysFname'] . "\",\"" . $_SESSION['zsysLname'] . "\")'>");
 
 ?>
