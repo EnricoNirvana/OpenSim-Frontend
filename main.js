@@ -30,8 +30,9 @@ function signup()
 	var userlname = prompt("Desired Avatar lastname");
 	var password = prompt("Desired password");
 	var passwordConf = prompt("Confirm");
+	var email = prompt("Whats your email address. We'll need this to send you a confirmation of signup...");
 	if(password == passwordConf){
-		window.location = "Signup.php?f=" + userfname + "&l=" + userlname + "&pwd=" + password;
+		window.location = "Signup.php?f=" + userfname + "&l=" + userlname + "&pwd=" + password + "&email=" + email;
 	}
 }
 function logout()
