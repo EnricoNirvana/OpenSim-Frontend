@@ -6,6 +6,7 @@ $em = $_GET['email'];
 $pwd = $_GET['pwd'];
 $scope = "00000000-0000-0000-0000-000000000000";
 $serv = "HomeURI= GatekeeperURI= InventoryServerURI= AssetServerURI= ";
+echo("Starting Signup");
 $uuid = system("uuidgen");
 include("CONFIG/mail.php");
 include("CONFIG/db.php");
@@ -14,10 +15,10 @@ mysql_connect($dbloc,$dbuser,$dbpass);
 mysql_select_db($dbname);
 
 // Create the account
-mysql_query("INSERT INTO UserAccounts VALUES('".$uuid."','".$scope."','".$f."','".$l."','".$eml."','".'".$serv."','".time()."','".'-1','0','Resident');");
+mysql_query("INSERT INTO UserAccounts VALUES('".$uuid."','".$scope."','".$f."','".$l."','".$em."','".$serv."','".time()."','-1','0','Resident')");
 $pwdsalt = md5(system("uuidgen"));
 $pwdhash = md5(md5($pwd).":".$pwdsalt);
-mysql_query("INSERT INTO auth VALUES('".$uuid."','".$pwdhash."','".$pwdsalt."','".$scope."','UserAccount');");
+mysql_query("INSERT INTO auth VALUES('".$uuid."','".$pwdhash."','".$pwdsalt."','".$scope."','UserAccount')");
 
 					$inv_template = array('Calling Cards' =>  2,
 							      'Objects' =>  6,
@@ -34,7 +35,7 @@ mysql_query("INSERT INTO auth VALUES('".$uuid."','".$pwdhash."','".$pwdsalt."','
 							      'My Inventory' =>  9,
 							      'Sounds' =>  1,
 							      'Animations' => 20
-					);;
+					);
 
 $master = system("uuidgen");
 
@@ -47,9 +48,11 @@ foreach($inv_template as $invfolder => $invtype)
 	} else {
 		$parent = $master;
 	}
-	mysql_query("INSERT INTO `inventoryFolders` VALUES('".$invfolder."','".$invtype."','1','".$invfldr."','".$uuid."','".$parent."');");
+	mysql_query("INSERT INTO `inventoryfolders` VALUES('".$invfolder."','".$invtype."','1','".$invfldr."','".$uuid."','".$parent."')");
 }
 mail($em,"Zontreck Systems Confirmation","We need you to confirm your account: " . $f . " " . $l." .... Heres the link to your account confirmation. http://" . $domain . "/Validate.php","From: " . $from);
+echo("<br/>Done!");
+
 echo("<script type='text/javascript'>window.location = 'index.php';</script>");
 
 ?>
