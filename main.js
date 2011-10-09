@@ -47,5 +47,8 @@ function edit()
 		var pwd = prompt("Current Password");
 		var npwd = prompt("New Password");
 		window.location = "ChPWD.php?pwd=" + pwd + "&npwd=" + npwd;
+	} else {
+		alert("OK");
 	}
+	alert("Thats all we currently have implemented");
 }
