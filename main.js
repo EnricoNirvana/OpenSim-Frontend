@@ -13,6 +13,7 @@ function load(signed,loggedin,regions,userfname,userlname)
 		document.write("</div>");
 	} else {
 		document.write("<div id='menu' style='background:white;width:1000;height:20'>");
+		document.write("<a onclick='edit()'>Edit</a> ");
 		document.write("<a onclick='logout()'>Logout</a> ");
 		document.write("</div>");
 	}
@@ -38,4 +39,13 @@ function signup()
 function logout()
 {
 	window.location = "Logout.php";
+}
+function edit()
+{
+	if(confirm("Edit Password?"))
+	{
+		var pwd = prompt("Current Password");
+		var npwd = prompt("New Password");
+		window.location = "ChPWD.php?pwd=" + pwd + "&npwd=" + npwd;
+	}
 }
