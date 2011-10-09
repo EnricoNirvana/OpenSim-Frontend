@@ -50,10 +50,5 @@ function edit()
 	} else {
 		alert("OK");
 	}
-	if(confirm("Empty Inventory?"))
-	{
-		var pwd = prompt("Password please?");
-		window.location = "einv.php?pwd=" + pwd;
-	}
 	alert("Thats all we have for now.");
 }
